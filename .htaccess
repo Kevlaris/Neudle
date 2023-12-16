@@ -1,0 +1,6 @@
+Options All -Indexes
+AddDefaultCharset utf-8
+AddCharset utf-8 .atom .css .js .json .rss .vtt .xml
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*?)/?$ /$1.html [L]
