@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: test
-        run: echo "test omg ${{ secrets.MAI }}"
+        run: echo "test omg ${{ vars.MAI }}"
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Pages
