@@ -24,7 +24,7 @@ gametableHeader.style.display = 'none';
 let paddings = parseInt(window.getComputedStyle(button).getPropertyValue('margin-left')) + parseInt(window.getComputedStyle(nameInput).getPropertyValue('margin-right'));
 nameInput.style.width = `calc(100% - ${button.offsetWidth}px - ${paddings}px)`;
 
-function readTextFile(file, callback) {
+function readJsonFile(file, callback) {
 	var rawFile = new XMLHttpRequest();
 	rawFile.overrideMimeType("application/json");
 	rawFile.open("GET", file, true);
@@ -36,7 +36,7 @@ function readTextFile(file, callback) {
 	rawFile.send(null);
 }
 //load tanarok
-readTextFile("tanarok.json", function(text){
+readJsonFile("tanarok.json", function(text){
 	tanarok = JSON.parse(text);
 
 	nevek = Object.keys(tanarok);
@@ -45,7 +45,7 @@ readTextFile("tanarok.json", function(text){
 	nevek.sort();
 });
 //load szabalyok
-readTextFile("szabalyok.json", function(text){
+readJsonFile("szabalyok.json", function(text){
 	szabalyok = JSON.parse(text);
 	//mai = szabalyok.mai;
 	if (szabalyok.tegnapi) {
@@ -54,10 +54,22 @@ readTextFile("szabalyok.json", function(text){
 		tegnapi.style.display = 'initial';
 	}
 });
-readTextFile(maiKey + ".txt", function(text){
+
+function readTextFile(file, callback) {
+	var rawFile = new XMLHttpRequest();
+	rawFile.overrideMimeType("text/plain");
+	rawFile.open("GET", file, true);
+	rawFile.onreadystatechange = function() {
+		if (rawFile.readyState === 4 && rawFile.status == "200") {
+			callback(rawFile.responseText);
+		}
+	}
+	rawFile.send(null);
+}
+readTextFile(maiKey + '.txt', function(text){
 	mai = text;
 	console.log(mai);
-});
+})
 
 function loadNames(data, element) {
 	element.innerHTML = "";
