@@ -67,7 +67,7 @@ function readTextFile(file, callback) {
 	rawFile.send(null);
 }
 readTextFile(maiKey + '.txt', function(text){
-	mai = text;
+	mai = text.trim();
 	console.log(mai);
 })
 
