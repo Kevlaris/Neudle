@@ -7,7 +7,7 @@ var tanarok;
 var nevek;
 let tippek = [];
 
-let tipp1, tipp2, mai;
+let tippMegjelenites, tipp1, tipp2, mai;
 
 const gametable = document.getElementById('gametable');
 const gametableHeader = document.getElementById('gametableHeader');
@@ -47,6 +47,7 @@ readTextFile("tanarok.json", function(text){
 //load szabalyok
 readTextFile("szabalyok.json", function(text){
 	let data = JSON.parse(text);
+	tippMegjelenites = data.tippMegjelenites;
 	tipp1 = data.tipp1;
 	tipp2 = data.tipp2;
 	mai = data.mai;
@@ -143,7 +144,7 @@ function tipp() {
 	tippek.push(nev);
 	if (nev == mai) solved();
 	else {
-		if (tippek.length >= 2) {
+		if (tippek.length >= tippMegjelenites) {
 			if (tippek.length < tipp1) {
 				help1.parentElement.style.display = 'table-row';
 				help1.innerHTML = "<b>1. segítség:</b> " + (tipp1 - tippek.length) + " kör múlva";
