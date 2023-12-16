@@ -1,3 +1,6 @@
+import MAI from "./vars.js";
+console.log(MAI);
+
 const green = "#32cd32";
 const yellow = "#cda532";
 const red = "#cd3232";
