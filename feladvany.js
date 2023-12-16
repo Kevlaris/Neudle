@@ -68,7 +68,6 @@ function readTextFile(file, callback) {
 }
 readTextFile(maiKey + '.txt', function(text){
 	mai = text.trim();
-	console.log(mai);
 })
 
 function loadNames(data, element) {
@@ -180,8 +179,8 @@ function tipp() {
 //-1 = piros, 0 = sárga, 1 = zöld
 function kozosVonasok(nev1, nev2, tulajdonsag) {
 	//console.log("called");
-	t1 = tanarok[nev1][tulajdonsag];
-	t2 = tanarok[nev2][tulajdonsag];
+	t1 = tanarok[nev1.trim()][tulajdonsag.trim()];
+	t2 = tanarok[nev2.trim()][tulajdonsag.trim()];
 	let result = -1;
 	if (typeof(t1) === 'object' && typeof(t2) === 'object') {
 		let count = 0;
