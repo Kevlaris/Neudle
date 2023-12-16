@@ -1,6 +1,15 @@
+# Disable Directory Browsing
 Options All -Indexes
+# Enforce UTF-8
 AddDefaultCharset utf-8
 AddCharset utf-8 .atom .css .js .json .rss .vtt .xml
+# Clean URLs
 RewriteEngine on
 RewriteCond %{REQUEST_FILENAME}.html -f
 RewriteRule ^(.*?)/?$ /$1.html [L]
+# Deny access to .xyz files (config)
+RedirectMatch 404 /\..*$
+# Disable image hotlinking
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !^https?://(.+\.)?example.com [NC]
+RewriteRule \.(jpe?g|png|gif|bmp)$ - [NC,F,L]
