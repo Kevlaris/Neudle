@@ -8,7 +8,9 @@ RewriteEngine on
 RewriteCond %{REQUEST_FILENAME}.html -f
 RewriteRule ^(.*?)/?$ /$1.html [L]
 # Deny access to .xyz files (config)
-RedirectMatch 404 /\..*$
+RewriteCond %{SCRIPT_FILENAME} -d [OR]
+RewriteCond %{SCRIPT_FILENAME} -f
+RewriteRule "(^|/)\." - [F]
 # Disable image hotlinking
 RewriteCond %{HTTP_REFERER} !^$
 RewriteCond %{HTTP_REFERER} !^https?://(.+\.)?neudle.11italy.hu [NC]
