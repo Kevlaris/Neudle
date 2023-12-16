@@ -54,8 +54,9 @@ readTextFile("szabalyok.json", function(text){
 		tegnapi.style.display = 'initial';
 	}
 });
-readTextFile(maiKey, function(text){
+readTextFile(maiKey + ".txt", function(text){
 	mai = text;
+	console.log(mai);
 });
 
 function loadNames(data, element) {
