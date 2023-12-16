@@ -1,37 +1,44 @@
 <!DOCTYPE html>
-<html lang="hu">
+<html lang="hu" prefix="og: https://ogp.me/ns#">
 	<head>
 		<title>Neudle - A Neumannos Rejtvényoldal</title>
 		<link rel="icon" href="logo.png">
+		<link rel="stylesheet" href="style.css">
+
+		<meta property="og:title" content="Neudle - A Neumannos Rejtvényoldal" />
+		<meta property="og:type" content="website" />
+		<meta property="og:image" content="https://www.neudle.11italy.hu/logo.png" />
+		<meta property="og:url" content="https://www.neudle.11italy.hu/" />
+		<meta property="og:locale" content="hu_HU" />
+		<meta property="og:site_name" content="11.Italy" />
+
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Caveat">
-
-		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
-		<div id="main">
-			<div id="header">
-				<h1 id="title"><a href="index.html" title="Főoldal">Neudle</a></h1>
+		<div id="window">
+			<header>
+				<h1 id="title" class="growOnHover"><a href="index.html" title="Főoldal">Neudle</a></h1>
 				<hr style="width: 36px; margin-top: 4px; margin-bottom: 4px">
 				<h2 id="subtitle">A Neumannos Rejtvényoldal</h2>
-			</div>
-			<div id="content">
+			</header>
+			<main>
 				<p><strong>Bongiorno!</strong></p>
-				<p>Úgy gondolod, ismered a tanáraidat? Szeretnéd próbára tenni a tudásod? Ez a játék a Wordle és a LoLdle ötvözete, viszont ezúttal a játékkarakterek és mindenféle bugyuta szavak helyett a kedvenc tanáraitokat kell kitalálnotok! Sok sikert, jó szórakozást!</p>
+				<p>Úgy gondolod, ismered a tanáraidat? Szeretnéd próbára tenni a tudásod? Ez a játék a <a href="https://www.nytimes.com/games/wordle/" target="_blank">Wordle</a> és a <a href="https://loldle.net/" target="_blank">LoLdle</a> neumanni ötvözete, viszont ezúttal a játékkarakterek és mindenféle bugyuta szavak helyett a kedvenc tanáraitokat kell kitalálnotok! Sok sikert, jó szórakozást!</p>
 				<p>Minden nap új feladványokkal készülünk nektek, ne maradjatok le! Megéri mindet kitalálni, mert a végén értékes nyeremény ütheti a markod!</p>
-				<!-- <p>Ha tetszett a játék, akkor mutasd meg haverjaidnak, osztálytársaidnak, és ne felejtsd el bekövetni a 11.Italyt a hasonló szórakoztató tartalmakért és a legfrissebb hírekért!</p> -->
+				<p>Ha tetszett a játék, akkor ne felejtsd el megmutatni haverjaidnak és osztálytársaidnak, de a legfontosabb, hogy <strong style="font-size: larger; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">szavazz a 11.I-re!</strong></p>
 
-				<button id="start" onclick="document.location='actual.html'">▶ KEZDÉS</button>
-			</div>
-			<div id="footer">
-				<!-- <div id="split">
+				<button id="start" class="growOnHover" onclick="document.location='actual.html'">▶ KEZDÉS</button>
+			</main>
+			<footer>
+				<div id="split">
 					<p>11.Italy</p>
-					<p style="text-align: right;">2023 Diáknapok</p>
-				</div> -->
+					<p style="text-align: right;">2023 Neumann Diáknapok</p>
+				</div>
 				<p style="font-size: 13px; color: rgb(190, 190, 190);">A weboldal csupán a szórakozás céljából jött létre, nem áll szándékában véleményt formálni vagy rossz színben feltüntetni a benne szereplő személyeket. Az oldal nem a Neumann János Gimnázium, Technikum és Kollégium megbízásából készült.</p>
-				<!-- <p style="font-size: 13px; color: rgb(190, 190, 190);">Meghibásodás, észrevétel esetén keress bátran: <a style="color: white;" href="mailto:team3csh@gmail.com">Csuhai Hunor</a></p> -->
+				<p style="font-size: 13px; color: rgb(190, 190, 190);">Meghibásodás, észrevétel esetén keress bátran: <a href="mailto:team3csh@gmail.com">Csuhai Hunor</a></p>
 			</div>
 		</div>
 	</body>
@@ -54,8 +61,6 @@
 
 			margin: auto;
 			display: block;
-
-			transition: 0.1s;
 		}
 		#start:hover {
 			background-color: rgb(17, 182, 17);

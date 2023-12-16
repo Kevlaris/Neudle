@@ -1,9 +1,16 @@
 <!DOCTYPE html>
-<html lang="hu">
+<html lang="hu" prefix="og: https://ogp.me/ns#">
 	<head>
 		<title>Neudle - Mai Feladvány</title>
 		<link rel="icon" href="logo.png">
 		<link rel="stylesheet" href="style.css">
+
+		<meta property="og:title" content="Neudle - A mai rejtvény" />
+		<meta property="og:type" content="website" />
+		<meta property="og:image" content="https://www.neudle.11italy.hu/logo.png" />
+		<meta property="og:url" content="https://www.neudle.11italy.hu/actual.html/" />
+		<meta property="og:locale" content="hu_HU" />
+		<meta property="og:site_name" content="11.Italy" />
 
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,13 +18,13 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Caveat">
 	</head>
 	<body>
-		<div id="main">
-			<div id="header">
-				<h1 id="title"><a href="index.html" title="Főoldal">Neudle</a></h1>
+		<div id="window">
+			<header>
+				<h1 id="title" class="growOnHover"><a href="index.html" title="Főoldal">Neudle</a></h1>
 				<hr style="width: 36px; margin-top: 4px; margin-bottom: 4px">
 				<h2 id="subtitle">A Neumannos Rejtvényoldal</h2>
-			</div>
-			<div id="content">
+			</header>
+			<main>
 				<table id="colorHelp">
 					<!-- <tr class="noborder">
 						<th style="padding-top: 0px; padding-bottom: 0px; height: 2em;">Jelmagyarázat:</th>
@@ -71,14 +78,14 @@
 						<th style="width: 20%;">Tantárgy</th>
 					</tr>
 				</table>
-			</div>
-			<div id="footer">
-				<!-- <div id="split">
+			</main>
+			<footer>
+				<div id="split">
 					<p>11.Italy</p>
-					<p style="text-align: right;">2023 Diáknapok</p>
-				</div> -->
+					<p style="text-align: right;">2023 Neumann Diáknapok</p>
+				</div>
 				<p style="font-size: 13px; color: rgb(190, 190, 190);">A weboldal csupán a szórakozás céljából jött létre, nem áll szándékában véleményt formálni vagy rossz színben feltüntetni a benne szereplő személyeket. Az oldal nem a Neumann János Gimnázium, Technikum és Kollégium megbízásából készült.</p>
-				<!-- <p style="font-size: 13px; color: rgb(190, 190, 190);">Meghibásodás, észrevétel esetén keress bátran: <a style="color: white;" href="mailto:team3csh@gmail.com">Csuhai Hunor</a></p> -->
+				<p style="font-size: 13px; color: rgb(190, 190, 190);">Meghibásodás, észrevétel esetén keress bátran: <a href="mailto:team3csh@gmail.com">Csuhai Hunor</a></p>
 			</div>
 		</div>
 	</body>
