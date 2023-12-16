@@ -70,6 +70,11 @@ readTextFile(maiKey + '.txt', function(text){
 	mai = text.trim();
 })
 
+function playAudio(name) {
+	var audio = new Audio('sounds/' + name);
+	audio.play();
+}
+
 function loadNames(data, element) {
 	element.innerHTML = "";
 	if (!data) return null;
@@ -100,6 +105,7 @@ nameInput.addEventListener('input', function() {
 
 //amikor megoldottad
 function solved() {
+	playAudio('yippee.wav');
 	nameInput.disabled = true;
 	button.disabled = true;
 
@@ -116,10 +122,12 @@ function tipp() {
 	if (tippek.includes(nev)) {
 		errorText.innerHTML = "Ezt már próbáltad!";
 		errorText.style.display = "initial";
+		playAudio('fart.mp3');
 		return;
 	} else if (!(nev in tanarok)) {
 		errorText.innerHTML = "Ilyen tanár nincs a játékban!";
 		errorText.style.display = "initial";
+		playAudio('fart.mp3');
 		return;
 	} else {
 		errorText.innerHTML = "";
@@ -155,6 +163,7 @@ function tipp() {
 	tippek.push(nev);
 	if (nev == mai) solved();
 	else {
+		playAudio('fart.mp3');
 		if (tippek.length >= szabalyok.tippMegjelenites) {
 			if (tippek.length < szabalyok.tipp1) {
 				help1.parentElement.style.display = 'table-row';
