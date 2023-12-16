@@ -6,7 +6,7 @@ const gray = "#646464"
 var tanarok;
 var nevek;
 let tippek = [];
-
+let counter;
 let tippMegjelenites, tipp1, tipp2, mai;
 
 const gametable = document.getElementById('gametable');
@@ -43,7 +43,6 @@ readTextFile("tanarok.json", function(text){
 	if (idx > -1) nevek.splice(idx, 1);
 	nevek.sort();
 });
-
 //load szabalyok
 readTextFile("szabalyok.json", function(text){
 	let data = JSON.parse(text);
@@ -51,6 +50,10 @@ readTextFile("szabalyok.json", function(text){
 	tipp1 = data.tipp1;
 	tipp2 = data.tipp2;
 	mai = data.mai;
+});
+//load stats
+readTextFile("counter.txt", function(text){
+	counter = parseInt(text);
 });
 
 function loadNames(data, element) {
@@ -87,8 +90,9 @@ function solved() {
 	button.disabled = true;
 
 	var p = document.createElement('p');
-	p.innerHTML = "Gratulálunk, kitaláltad! A megfejtés <b>" + mai + "</b> volt, akit " + tippek.length + " tipp után találtál ki.";
-	document.getElementById('content').appendChild(p);
+	p.innerHTML = `Gratulálunk, kitaláltad! A megfejtés <b>${mai}</b> volt, akit ${tippek.length} tipp után találtál ki.`;
+	document.getElementsByTagName('main')[0].appendChild(p);
+	p.scrollIntoView(true);
 }
 
 //amikor megnyomja a tipp gombot
@@ -112,34 +116,27 @@ function tipp() {
 	gametableHeader.style.display = 'table-row';
 	nameInput.value = "";
 
-	let row = document.createElement('tr');
+	let row = gametable.insertRow(4);
 
-	let td1 = document.createElement('td');
-	td1.innerHTML = nev;
-	td1.style.backgroundColor = nev == mai ? green : red;
-	row.appendChild(td1);
+	var td = row.insertCell(-1);
+	td.innerHTML = nev;
+	td.style.backgroundColor = nev == mai ? green : red;
 
-	let td2 = document.createElement('td');
-	td2.innerHTML = tanar.nem;
-	td2.style.backgroundColor = kozosVonasok(nev, mai, "nem");
-	row.appendChild(td2);
+	td = row.insertCell(-1);
+	td.innerHTML = tanar.nem;
+	td.style.backgroundColor = kozosVonasok(nev, mai, "nem");
 
-	let td3 = document.createElement('td');
-	td3.innerHTML = tanar.hajszin;
-	td3.style.backgroundColor = kozosVonasok(nev, mai, "hajszin");
-	row.appendChild(td3);
+	td = row.insertCell(-1);
+	td.innerHTML = tanar.hajszin;
+	td.style.backgroundColor = kozosVonasok(nev, mai, "hajszin");
 
-	let td4 = document.createElement('td');
-	td4.innerHTML = tanar.jellem.join(', ');
-	td4.style.backgroundColor = kozosVonasok(nev, mai, "jellem");
-	row.appendChild(td4);
+	td = row.insertCell(-1);
+	td.innerHTML = tanar.jellem.join(', ');
+	td.style.backgroundColor = kozosVonasok(nev, mai, "jellem");
 
-	let td5 = document.createElement('td');
-	td5.innerHTML = tanar.tantargy.join(', ');
-	td5.style.backgroundColor =kozosVonasok(nev, mai, "tantargy");
-	row.appendChild(td5);
-
-	gametable.appendChild(row);
+	td = row.insertCell(-1);
+	td.innerHTML = tanar.tantargy.join(', ');
+	td.style.backgroundColor =kozosVonasok(nev, mai, "tantargy");
 
 	tippek.push(nev);
 	if (nev == mai) solved();
