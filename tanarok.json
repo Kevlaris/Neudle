@@ -1,0 +1,37 @@
+{
+    "proto": {
+        "nem": "",
+        "hajszin": "",
+        "jellem": [""],
+        "tantargy": [""],
+        "segitseg": ["", ""]
+    },
+    "Molnár Ferenc": {
+        "nem": "férfi",
+        "hajszin": "szürke",
+        "jellem": ["a", "b"],
+        "tantargy": ["történelem", "magyar"],
+        "segitseg": ["Uraim!", "Nem eszünk, nem iszunk, nem mobilozunk!"]
+    },
+    "Kelemen Tünde": {
+        "nem": "nő",
+        "hajszin": "sötét",
+        "jellem": ["c", "b"],
+        "tantargy": ["magyar", "német"],
+        "segitseg": ["Lesünk, mint Mari néni a hegyoldalban", "Embörpalánta"]
+    },
+    "Nagy Tünde": {
+        "nem": "nő",
+        "hajszin": "sötét",
+        "jellem": ["d"],
+        "tantargy": ["angol"],
+        "segitseg": ["Gyerekek, nem olvassátok a Teamst...", "valami"]
+    },
+    "Zentai Péter": {
+        "nem": "férfi",
+        "hajszin": "szürke",
+        "jellem": ["a", "d"],
+        "tantargy": ["informatika"],
+        "segitseg": ["Mit is kellene ma csinálnunk?", "valami"]
+    }
+}
