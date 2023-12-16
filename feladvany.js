@@ -6,8 +6,8 @@ const gray = "#646464"
 var tanarok;
 var nevek;
 let tippek = [];
-let counter;
-let tippMegjelenites, tipp1, tipp2, mai;
+let szabalyok;
+let mai;
 
 const gametable = document.getElementById('gametable');
 const gametableHeader = document.getElementById('gametableHeader');
@@ -45,15 +45,13 @@ readTextFile("tanarok.json", function(text){
 });
 //load szabalyok
 readTextFile("szabalyok.json", function(text){
-	let data = JSON.parse(text);
-	tippMegjelenites = data.tippMegjelenites;
-	tipp1 = data.tipp1;
-	tipp2 = data.tipp2;
-	mai = data.mai;
-});
-//load stats
-readTextFile("counter.txt", function(text){
-	counter = parseInt(text);
+	szabalyok = JSON.parse(text);
+	mai = szabalyok.mai;
+	if (szabalyok.tegnapi) {
+		const tegnapi = document.getElementById('tegnapi');
+		tegnapi.innerHTML = `<i>A tegnapi megfejtés: <u>${szabalyok.tegnapi}</u></i>`;
+		tegnapi.style.display = 'initial';
+	}
 });
 
 function loadNames(data, element) {
@@ -141,20 +139,20 @@ function tipp() {
 	tippek.push(nev);
 	if (nev == mai) solved();
 	else {
-		if (tippek.length >= tippMegjelenites) {
-			if (tippek.length < tipp1) {
+		if (tippek.length >= szabalyok.tippMegjelenites) {
+			if (tippek.length < szabalyok.tipp1) {
 				help1.parentElement.style.display = 'table-row';
-				help1.innerHTML = "<b>1. segítség:</b> " + (tipp1 - tippek.length) + " kör múlva";
+				help1.innerHTML = "<b>1. segítség:</b> " + (szabalyok.tipp1 - tippek.length) + " kör múlva";
 			}
-			else if (tippek.length == tipp1) {
+			else if (tippek.length == szabalyok.tipp1) {
 				help1.parentElement.style.display = 'table-row';
 				help1.innerHTML = '<b>1. segítség:</b> "' + tanarok[mai].segitseg[0] + '"';
 			}
-			else if (tippek.length < tipp2) {
+			else if (tippek.length < szabalyok.tipp2) {
 				help2.parentElement.style.display = 'table-row';
-				help2.innerHTML = "<b>2. segítség:</b> " + (tipp2 - tippek.length) + " kör múlva";
+				help2.innerHTML = "<b>2. segítség:</b> " + (szabalyok.tipp2 - tippek.length) + " kör múlva";
 			}
-			else if (tippek.length == tipp2) {
+			else if (tippek.length == szabalyok.tipp2) {
 				help2.parentElement.style.display = 'table-row';
 				help2.innerHTML = '<b>2. segítség:</b> "' + tanarok[mai].segitseg[1] + '"';
 			}
