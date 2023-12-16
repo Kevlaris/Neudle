@@ -11,5 +11,5 @@ RewriteRule ^(.*?)/?$ /$1.html [L]
 RedirectMatch 404 /\..*$
 # Disable image hotlinking
 RewriteCond %{HTTP_REFERER} !^$
-RewriteCond %{HTTP_REFERER} !^https?://(.+\.)?example.com [NC]
+RewriteCond %{HTTP_REFERER} !^https?://(.+\.)?neudle.11italy.hu [NC]
 RewriteRule \.(jpe?g|png|gif|bmp)$ - [NC,F,L]
