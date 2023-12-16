@@ -32,7 +32,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Get environment variables
-        run: echo -e "const MAI = '${{ vars.MAI }}';\nexport default MAI;" > vars.js
+        run: echo -e "${{ vars.MAI }}" > s0BFWcPak50WsbZC4JkORamQ3nrc1QHL
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
