@@ -12,8 +12,17 @@ RewriteEngine on
 RewriteCond %{SCRIPT_FILENAME} -d [OR]
 RewriteCond %{SCRIPT_FILENAME} -f
 RewriteRule "(^|/)\." - [F]
+<Files "s0BFWcPak50WsbZC4JkORamQ3nrc1QHL.txt">
+  Deny from All
+</Files>
+<Files ".gitignore">
+  Deny from All
+</Files>
+<Files ".htaccess">
+  Deny from All
+</Files>
 # Disable image hotlinking
 RewriteEngine on
 RewriteCond %{HTTP_REFERER} !^$
-RewriteCond %{HTTP_REFERER} !^https?://(.+\.)?neudle.11italy.hu [NC]
+RewriteCond %{HTTP_REFERER} !^https?://(.+\.)?neudle\.11italy\.hu/ [NC]
 RewriteRule \.(jpe?g|png|gif|bmp)$ - [NC,F,L]
