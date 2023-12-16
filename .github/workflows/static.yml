@@ -29,10 +29,10 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: test
-        run: echo "test omg ${{ vars.MAI }}"
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Get environment variables
+        run: echo -e "const MAI = '${{ vars.MAI }}';\nexport default MAI;" > vars.js
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
