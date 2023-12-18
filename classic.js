@@ -20,6 +20,24 @@ function selectName(name) {
 	autocompleteList.innerHTML = "";
 }
 
+function toggleElement(id) {
+	const element = document.getElementById('toggleObject' + id);
+	const click = document.getElementById('toggleClick' + id);
+	let txt;
+	if (click) {
+		txt = click.innerText.trim();
+		if (txt[1] === ' ') txt = txt.substring(2);
+	}
+	if (element.style.display === 'none') {
+		element.style.display = '';
+		if (click) click.innerText = txt;
+	}
+	else {
+		element.style.display = 'none';
+		if (click) click.innerText = '▶ ' + txt;
+	}
+}
+
 $( document ).ready(function() {
 	
 var tanarok;

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+	<title>Neudle - Klasszikus</title>
+	<link rel="icon" href="images/logo.png">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="classic.css">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Caveat">
+
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	<script src="classic.js"></script>
+</head>
+	<body>
+		<div id="window">
+			<header>
+				<h1 id="title" class="growOnHover"><a href="./" title="Főoldal">Neudle</a></h1>
+				<hr style="width: 36px; margin-top: 4px; margin-bottom: 4px">
+				<h2 id="subtitle">A Neumannos Rejtvényoldal</h2>
+			</header>
+			<main>
+				<h1 style="text-align: center; margin-top: 8px;">Klasszikus feladvány</h1>
+				<p style="font-size: 18px;">A klasszikus játék menete a következő: adott az iskola egy tanára, akire a tulajdonságai alapján kell rájönnöd, találgatásos alapon. A próbálkozásaidra színekkel válaszol a program, a jelmagyarázatot oldalt találod. Ezen kívül a program időnként segítségekkel lát el, amelyek általában idézetek, vagy az adott személyhez kapcsolható dolgok. A lenti szövegdobozba gépelve meg fognak jelenni a választható tanárok nevei. Ajánlott a listából választani, mert így kiesik annak az esélye, hogy esetleg elgépeled. Minden tanárra csak egyszer tippelhetsz.</p>
+				<p id="tegnapi" style="display: none;"></p>
+				<h2 id="toggleClick1" class="clickableText" style="margin-bottom: 0px;" onclick="toggleElement(1);">Tulajdonságok</h2>
+				<ul id="toggleObject1" style="margin-top: 0px;">
+					<li><b>Név:</b> a tanár becses neve</li>
+					<li><b>Nem:</b> férfi / nő</li>
+					<li><b>Hajszín:</b> a szeretett tanár hajának színe</li>
+					<li><b>Szakmacsoport:</b> a tanár szakmacsoportjai, vesszőkkel tagolva</li>
+					<li><b>Tantárgy:</b> a tanár által tanított tárgyak, vesszőkkel tagolva</li>
+					<li><b>Osztályfőnök?:</b> igen / nem érték, "igen" esetén az évfolyamot is feltüntetjük</li>
+				</ul>
+				
+				<p style="font-size: 18px;"><b>Sok sikert, jó szórakozást!</b></p>
+				
+				<table id="colorHelp">
+					<tr class="noborder">
+						<th colspan="3" style="padding-top: 0px; padding-bottom: 0px; height: 2em;"><h2>Jelmagyarázat:</h2></th>
+					</tr>
+					<tr>
+						<td style="background-color: #32cd32;">teljesen megegyezik</td>
+						<td style="background-color: #cda532;">részben megegyezik</td>
+						<td style="background-color: #cd3232;">egyáltalán nem egyezik meg</td>
+					</tr>
+				</table>
+
+				<table id="gametable">
+					<tr class="noborder">
+						<td colspan="6" style="position: relative; height: fit-content; z-index: 80;">
+							<div style="margin-bottom: 0px; height: fit-content;">
+								<form>
+									<input type="text" name="name" id="name" required autocomplete="off" readonly onfocus="this.removeAttribute('readonly');" placeholder="Kezdd el gépelni egy tanár nevét..." />
+									<input type="button" id="submit" value="Tippelj!">
+									<ul id="autocomplete-list">
+
+									</ul>
+								</form>
+							</div>
+							
+							<p id="error"></p>
+						</td>
+					</tr>
+					<tr class="noborder" style="display: none;">
+						<td id="help1" colspan="6" style="height: 2em;"><b>1. segítség:</b> a</td>
+					</tr>
+					<tr class="noborder" style="display: none;">
+						<td id="help2" colspan="6" style="height: 2em;"><b>1. segítség:</b> a</td>
+					</tr>
+					<tr id="gametableHeader">
+						<th style="width: 20%;">Név</th>
+						<th style="width: 10%;">Nem</th>
+						<th style="width: 15%;">Hajszín</th>
+						<th style="width: 20%;">Szakmacsoport</th>
+						<th style="width: 20%;">Tantárgy</th>
+						<th style="width: 15%;">Osztályfőnök?</th>
+					</tr>
+				</table>
+			</main>
+			<footer>
+				<div id="split">
+					<p>11.Italy</p>
+					<p style="text-align: right;">2023 Neumann Diáknapok</p>
+				</div>
+				<p style="font-size: 13px; color: rgb(190, 190, 190);">A weboldal csupán a szórakozás céljából jött létre, nem áll szándékában véleményt formálni vagy rossz színben feltüntetni a benne szereplő személyeket. Az oldal nem a Neumann János Gimnázium, Technikum és Kollégium megbízásából készült.</p>
+				<p style="font-size: 13px; color: rgb(190, 190, 190);">Meghibásodás, észrevétel esetén keress bátran: <a href="mailto:team3csh@gmail.com">Csuhai Hunor</a></p>
+			</footer>
+		</div>
+	</body>
+</html>

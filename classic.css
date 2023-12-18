@@ -1,0 +1,139 @@
+p#error {
+    display: none;
+    margin-top: 0px;
+    color: #cd3232;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .4);
+}
+
+table {
+    background-color: rgb(70, 70, 70);
+    border-spacing: 10px;
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#colorHelp {
+    background-color: rgba(70, 70, 70, 0.5);
+    table-layout: fixed;
+    width: 500px;
+    display: block;
+    margin: auto;
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+#colorHelp h2 {
+    margin: 5px 10px 5px 10px;
+}
+
+#gametable {
+    width: 80%;
+    clear: both;
+}
+th, td {
+    border: 1px solid white;
+    border-radius: 5px;
+    background-color: rgb(100, 100, 100);
+    text-align: center;
+    padding: 10px;
+    height: 50px;
+
+    cursor: default;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+    th:hover, td:hover {
+        filter: brightness(1.2);
+    }
+tr.noborder > td, tr.noborder > th {
+    border: 0px;
+    padding: 0px;
+    background-color: inherit;
+    z-index: 0;
+}
+    tr.noborder > td:hover, tr.noborder > th:hover {
+        filter: brightness(1);
+    }
+#gametable form {
+    vertical-align: middle;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    height: 100%;
+    flex-wrap: nowrap;
+    display: flex;
+    box-sizing: border-box;
+    flex: 1;
+    align-items: center;
+}
+    #gametable form > * {
+        margin: 5px;
+    }
+    #gametable form input#name {
+        background-color: rgb(100, 100, 100);
+        border: 0px;
+        border-radius: 5px;
+        height: 100%;
+        padding: 5px 10px 5px 10px;
+        font-size: 20px;
+        color: white;
+        box-sizing: border-box;
+        font-family: "Caveat", "Segoe UI Script", cursive;
+    }
+        #gametable form input#name:hover {
+            filter: brightness(1.2);
+        }
+    #gametable form input#submit {
+        background-color: #32cd32;
+        padding: 10px;
+        border: 0px;
+        border-radius: 5px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        height: 100%;
+        cursor: pointer;
+        font-family: 'Marcellus', 'Garamond', serif;
+        font-weight: bold;
+        color: white;
+        font-weight: bold;
+        font-size: 16px;
+        text-align: center;
+    }
+        #gametable form input#submit:hover {
+            filter: brightness(1.2);
+        }
+        #gametable form input#submit:active {
+            filter: brightness(0.8);
+        }
+
+#autocomplete-list {
+    position: absolute;
+    left: 0px;
+    top: 45px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-height: 150px;
+    z-index: 99;
+    background-color: rgb(100, 100, 100);
+    border-radius: 5px;
+    overflow-y: auto;
+    list-style-type: none;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, .4);
+}
+    #autocomplete-list li {
+        background-color: rgb(100, 100, 100);
+        padding: 5px 10px 5px 10px;
+        cursor: pointer;
+        text-align: start;
+    }
+        #autocomplete-list li:hover {
+            background-color: rgb(190, 190, 190);
+        }
+        #autocomplete-list li:active {
+            filter: brightness(0.8);
+        }

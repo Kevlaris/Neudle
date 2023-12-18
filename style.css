@@ -105,3 +105,17 @@ button {
 .growOnHover:hover {
 	transform: scale(1.1);
 }
+
+.clickableText {
+	color: white;
+	cursor: pointer;
+	-webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.clickableText:hover {
+	color: rgb(220, 220, 220);
+}
+.clickableText:active {
+	color: rgb(140, 140, 140);
+}
