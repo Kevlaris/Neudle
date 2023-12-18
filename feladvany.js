@@ -4,20 +4,38 @@ const red = "#cd3232";
 const gray = "#646464"
 
 const maiKey = "s0BFWcPak50WsbZC4JkORamQ3nrc1QHL";
+
+var gametable;
+var gametableHeader;
+var nameInput;
+var errorText;
+var button;
+var help1;
+var help2;
+var autocompleteList;
+
+function selectName(name) {
+	console.log("select " + name);
+	nameInput.value = name;
+	autocompleteList.innerHTML = "";
+}
+
+$( document ).ready(function() {
+	
 var tanarok;
 var nevek;
 let tippek = [];
 let szabalyok;
 let mai;
 
-const gametable = document.getElementById('gametable');
-const gametableHeader = document.getElementById('gametableHeader');
-const nameInput = document.getElementById('name');
-const errorText = document.getElementById('error');
-const button = document.getElementById('submit');
-const help1 = document.getElementById('help1');
-const help2 = document.getElementById('help2');
-const autocompleteList = document.getElementById('autocomplete-list');
+gametable = document.getElementById('gametable');
+gametableHeader = document.getElementById('gametableHeader');
+nameInput = document.getElementById('name');
+errorText = document.getElementById('error');
+button = document.getElementById('submit');
+help1 = document.getElementById('help1');
+help2 = document.getElementById('help2');
+autocompleteList = document.getElementById('autocomplete-list');
 
 gametableHeader.style.display = 'none';
 
@@ -25,19 +43,13 @@ let paddings = parseInt(window.getComputedStyle(button).getPropertyValue('margin
 nameInput.style.width = `calc(100% - ${button.offsetWidth}px - ${paddings}px)`;
 
 function readJsonFile(file, callback) {
-	var rawFile = new XMLHttpRequest();
-	rawFile.overrideMimeType("application/json");
-	rawFile.open("GET", file, true);
-	rawFile.onreadystatechange = function() {
-		if (rawFile.readyState === 4 && rawFile.status == "200") {
-			callback(rawFile.responseText);
-		}
-	}
-	rawFile.send(null);
+	$.get(file, function(data){
+		callback(data);
+	}, 'json');
 }
 //load tanarok
-readJsonFile("tanarok.json", function(text){
-	tanarok = JSON.parse(text);
+readJsonFile("tanarok.json", function(data){
+	tanarok = data;
 
 	nevek = Object.keys(tanarok);
 	let idx = nevek.indexOf("proto");
@@ -45,8 +57,8 @@ readJsonFile("tanarok.json", function(text){
 	nevek.sort();
 });
 //load szabalyok
-readJsonFile("szabalyok.json", function(text){
-	szabalyok = JSON.parse(text);
+readJsonFile("szabalyok.json", function(data){
+	szabalyok = data;
 	//mai = szabalyok.mai;
 	if (szabalyok.tegnapi) {
 		const tegnapi = document.getElementById('tegnapi');
@@ -56,15 +68,9 @@ readJsonFile("szabalyok.json", function(text){
 });
 
 function readTextFile(file, callback) {
-	var rawFile = new XMLHttpRequest();
-	rawFile.overrideMimeType("text/plain");
-	rawFile.open("GET", file, true);
-	rawFile.onreadystatechange = function() {
-		if (rawFile.readyState === 4 && rawFile.status == "200") {
-			callback(rawFile.responseText);
-		}
-	}
-	rawFile.send(null);
+	$.get(file, function(text){
+		callback(text);
+	}, 'text');
 }
 readTextFile(maiKey + '.txt', function(text){
 	mai = text.trim();
@@ -85,12 +91,6 @@ function loadNames(data, element) {
 	});
 	element.innerHTML = inner;
 	element.style.width = window.getComputedStyle(nameInput).width;
-}
-
-function selectName(name) {
-	console.log("select " + name);
-	nameInput.value = name;
-	autocompleteList.innerHTML = "";
 }
 
 function filterNames(searchText) {
@@ -213,3 +213,6 @@ function kozosVonasok(nev1, nev2, tulajdonsag) {
 }
 
 button.addEventListener('click', tipp)
+
+
+});
