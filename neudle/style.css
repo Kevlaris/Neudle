@@ -12,7 +12,7 @@ a:active {
 	color: rgb(140, 140, 140);
 }
 body {
-	background-image: url("images/neumann_suli.jpg");
+	background-image: url("/images/neumann_suli.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
@@ -34,7 +34,7 @@ div#window {
 }
 header {
 	background-color: rgb(70, 70, 70);
-	background-image: url("images/jancsi.jpg");
+	background-image: url("/images/jancsi.jpg");
 	background-size: cover;
 	background-position: 0, 0;
 	background-blend-mode:soft-light;

@@ -15,5 +15,5 @@ RewriteRule "(^|/)\." - [F]
 # Disable image hotlinking
 RewriteEngine on
 RewriteCond %{HTTP_REFERER} !^$
-RewriteCond %{HTTP_REFERER} !^https?://(.+\.)?neudle.11italy.hu [NC]
+RewriteCond %{HTTP_REFERER} !^https?://(.+\.)?11italy.hu [NC]
 RewriteRule \.(jpe?g|png|gif|bmp)$ - [NC,F,L]
