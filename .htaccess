@@ -17,3 +17,9 @@ RewriteEngine on
 RewriteCond %{HTTP_REFERER} !^$
 RewriteCond %{HTTP_REFERER} !^https?://(.+\.)?11italy.hu [NC]
 RewriteRule \.(jpe?g|png|gif|bmp)$ - [NC,F,L]
+
+# Redirect
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^neudle\.11italy\.hu$ [NC]
+RewriteCond %{REQUEST_URI} !^/neudle/
+RewriteRule (.*) /neudle/$1
