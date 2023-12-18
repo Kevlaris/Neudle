@@ -153,12 +153,16 @@ function tipp() {
 	td.style.backgroundColor = kozosVonasok(nev, mai, "hajszin");
 
 	td = row.insertCell(-1);
-	td.innerHTML = tanar.jellem.join(', ');
-	td.style.backgroundColor = kozosVonasok(nev, mai, "jellem");
+	td.innerHTML = tanar.szakmacsoport.join(', ');
+	td.style.backgroundColor = kozosVonasok(nev, mai, "szakmacsoport");
 
 	td = row.insertCell(-1);
 	td.innerHTML = tanar.tantargy.join(', ');
 	td.style.backgroundColor =kozosVonasok(nev, mai, "tantargy");
+
+	td = row.insertCell(-1);
+	td.innerHTML = tanar.of.join(', ');
+	td.style.backgroundColor = kozosVonasok(nev, mai, "of");
 
 	tippek.push(nev);
 	if (nev == mai) solved();

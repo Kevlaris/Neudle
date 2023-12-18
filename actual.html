@@ -21,7 +21,6 @@
 			font-weight: bold;
 			text-shadow: 1px 1px 1px rgba(0, 0, 0, .4);
 		}
-
 		table {
 			background-color: rgb(70, 70, 70);
 			border-spacing: 10px;
@@ -30,7 +29,6 @@
 			margin-top: 20px;
 			margin-bottom: 20px;
 		}
-
 		#colorHelp {
 			table-layout: fixed;
 			width: 150px;
@@ -39,12 +37,10 @@
 			margin-top: 0px;
 			margin-left: 20px;
 		}
-
 		#gametable {
 			width: 80%;
 			clear: both;
 		}
-
 		th, td {
 			border: 1px solid white;
 			border-radius: 5px;
@@ -53,22 +49,18 @@
 			padding: 10px;
 			height: 50px;
 		}
-
 			th:hover, td:hover {
 				filter: brightness(1.2);
 			}
-
 		tr.noborder > td, tr.noborder > th {
 			border: 0px;
 			padding: 0px;
 			background-color: rgb(70, 70, 70);
 			z-index: 0;
 		}
-
 			tr.noborder > td:hover, tr.noborder > th:hover {
 				filter: brightness(1);
 			}
-
 		#gametable form {
 			vertical-align: middle;
 			padding-top: 0px;
@@ -77,17 +69,14 @@
 			margin-bottom: 0px;
 			height: 100%;
 			flex-wrap: nowrap;
-			text-wrap: nowrap;
 			display: flex;
 			box-sizing: border-box;
 			flex: 1;
 			align-items: center;
 		}
-
 			#gametable form > * {
 				margin: 5px;
 			}
-
 			#gametable form input#name {
 				background-color: rgb(100, 100, 100);
 				border: 0px;
@@ -99,11 +88,9 @@
 				box-sizing: border-box;
 				font-family: "Caveat", "Segoe UI Script", cursive;
 			}
-
 				#gametable form input#name:hover {
 					filter: brightness(1.2);
 				}
-
 			#gametable form input#submit {
 				background-color: #32cd32;
 				padding: 10px;
@@ -120,15 +107,12 @@
 				font-size: 16px;
 				text-align: center;
 			}
-
 				#gametable form input#submit:hover {
 					filter: brightness(1.2);
 				}
-
 				#gametable form input#submit:active {
 					filter: brightness(0.8);
 				}
-
 		#autocomplete-list {
 			position: absolute;
 			left: 0px;
@@ -144,18 +128,15 @@
 			list-style-type: none;
 			box-shadow: 3px 3px 3px rgba(0, 0, 0, .4);
 		}
-
 			#autocomplete-list li {
 				background-color: rgb(100, 100, 100);
 				padding: 5px 10px 5px 10px;
 				cursor: pointer;
 				text-align: start;
 			}
-
 				#autocomplete-list li:hover {
 					background-color: rgb(190, 190, 190);
 				}
-
 				#autocomplete-list li:active {
 					filter: brightness(0.8);
 				}
@@ -191,17 +172,13 @@
 				
 				<table id="gametable">
 					<tr class="noborder">
-						<td colspan="5" style="position: relative; height: fit-content; z-index: 80;">
+						<td colspan="6" style="position: relative; height: fit-content; z-index: 80;">
 							<div style="margin-bottom: 0px; height: fit-content;">
 								<form>
 									<input type="text" name="name" id="name" required autocomplete="off" readonly onfocus="this.removeAttribute('readonly');" placeholder="Kezdd el gépelni egy tanár nevét..." />
 									<input type="button" id="submit" value="Tippelj!">
 									<ul id="autocomplete-list">
-										<!-- <li>Fecóóóó</li>
-										<li>Geciiiii</li>
-										<li>Kurvaélet</li>
-										<li>Aztanemjóját</li>
-										<li>Dr. Anyuné Cigány Józsi</li> -->
+
 									</ul>
 								</form>
 							</div>
@@ -210,17 +187,18 @@
 						</td>
 					</tr>
 					<tr class="noborder" style="display: none;">
-						<td id="help1" colspan="5" style="height: 2em;"><b>1. segítség:</b> a</td>
+						<td id="help1" colspan="6" style="height: 2em;"><b>1. segítség:</b> a</td>
 					</tr>
 					<tr class="noborder" style="display: none;">
-						<td id="help2" colspan="5" style="height: 2em;"><b>1. segítség:</b> a</td>
+						<td id="help2" colspan="6" style="height: 2em;"><b>1. segítség:</b> a</td>
 					</tr>
 					<tr id="gametableHeader">
-						<th style="width: 30%;">Név</th>
+						<th style="width: 20%;">Név</th>
 						<th style="width: 10%;">Nem</th>
 						<th style="width: 15%;">Hajszín</th>
-						<th style="width: 25%;">Jellem</th>
+						<th style="width: 20%;">Szakmacsoport</th>
 						<th style="width: 20%;">Tantárgy</th>
+						<th style="width: 15%;">Osztályfőnök?</th>
 					</tr>
 				</table>
 			</main>

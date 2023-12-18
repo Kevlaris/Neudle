@@ -3,35 +3,40 @@
         "nem": "",
         "hajszin": "",
         "jellem": [""],
-        "tantargy": [""],
-        "segitseg": ["", ""]
+        "segitseg": ["", ""],
+        "szakmacsoport": [""],
+        "of": [""]
     },
     "Molnár Ferenc": {
         "nem": "férfi",
         "hajszin": "szürke",
-        "jellem": ["a", "b"],
         "tantargy": ["történelem", "magyar"],
-        "segitseg": ["Uraim!", "Nem eszünk, nem iszunk, nem mobilozunk!"]
+        "segitseg": ["Uraim!", "Nem eszünk, nem iszunk, nem mobilozunk!"],
+        "szakmacsoport": ["humán"],
+        "of": ["idk"]
     },
     "Kelemen Tünde": {
         "nem": "nő",
         "hajszin": "sötét",
-        "jellem": ["c", "b"],
         "tantargy": ["magyar", "német"],
-        "segitseg": ["Lesünk, mint Mari néni a hegyoldalban", "Embörpalánta"]
+        "segitseg": ["Lesünk, mint Mari néni a hegyoldalban", "Embörpalánta"],
+        "szakmacsoport": ["humán", "idegennyelvi"],
+        "of": ["igen", "7. évf."]
     },
     "Nagy Tünde": {
         "nem": "nő",
         "hajszin": "sötét",
-        "jellem": ["d"],
         "tantargy": ["angol"],
-        "segitseg": ["Gyerekek, nem olvassátok a Teamst...", "valami"]
+        "segitseg": ["Gyerekek, nem olvassátok a Teamst...", "valami"],
+        "szakmacsoport": ["idegennyelvi"],
+        "of": ["igen", "11. évf."]
     },
     "Zentai Péter": {
         "nem": "férfi",
         "hajszin": "szürke",
-        "jellem": ["a", "d"],
         "tantargy": ["informatika"],
-        "segitseg": ["Mit is kellene ma csinálnunk?", "valami"]
+        "segitseg": ["Mit is kellene ma csinálnunk?", "valami"],
+        "szakmacsoport": ["informatikai és gazdasági"],
+        "of": ["idk"]
     }
 }
