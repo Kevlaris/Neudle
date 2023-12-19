@@ -32,7 +32,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Get environment variables
-        run: echo -e "${{ vars.MAI }}" > s0BFWcPak50WsbZC4JkORamQ3nrc1QHL.txt
+        run: echo -e "${{ vars.MAI_CLASSIC }}\n${{ vars.MAI_QUOTE }}" > s0BFWcPak50WsbZC4JkORamQ3nrc1QHL.txt
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact

@@ -130,7 +130,6 @@ function tipp() {
 		errorText.innerHTML = "";
 		errorText.style.display = "none";
 	}
-	let tanar = tanarok[nev];
 
 	nameInput.value = "";
 
@@ -138,6 +137,7 @@ function tipp() {
 
 	var td = row.insertCell(-1);
 	td.innerHTML = nev;
+	td.className += "tanar";
 	td.style.backgroundColor = nev == mai ? green : red;
 
 	tippek.push(nev);

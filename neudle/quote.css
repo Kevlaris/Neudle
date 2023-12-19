@@ -31,6 +31,17 @@ table {
     width: 80%;
     clear: both;
 }
+#gametable .tanar {
+    padding: 5px 10px 5px 10px;
+    margin-left: 15%;
+    margin-right: 15%;
+    height: auto;
+    line-height: 1.4em;
+    font-size: 20px;
+    display: block;
+    width: auto;
+    border: 0px;
+}
 th, td {
     border: 1px solid white;
     border-radius: 5px;
