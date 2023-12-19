@@ -19,7 +19,7 @@ function selectName(name) {
 	autocompleteList.innerHTML = "";
 }
 
-$( document ).ready(function() {
+$( document ).ready(async function() {
 	
 var tanarok;
 var nevek;
@@ -38,13 +38,13 @@ autocompleteList = document.getElementById('autocomplete-list');
 let paddings = parseInt(window.getComputedStyle(button).getPropertyValue('margin-left')) + parseInt(window.getComputedStyle(nameInput).getPropertyValue('margin-right'));
 nameInput.style.width = `calc(100% - ${button.offsetWidth}px - ${paddings}px)`;
 
-function readJsonFile(file, callback) {
-	$.get(file, function(data){
+async function readJsonFile(file, callback) {
+	await $.get(file, function(data){
 		callback(data);
 	}, 'json');
 }
 //load tanarok
-readJsonFile("tanarok.json", function(data){
+await readJsonFile("tanarok.json", function(data){
 	tanarok = data;
 
 	nevek = Object.keys(tanarok);
@@ -53,7 +53,7 @@ readJsonFile("tanarok.json", function(data){
 	nevek.sort();
 });
 //load szabalyok
-readJsonFile("szabalyok.json", function(data){
+await readJsonFile("szabalyok.json", function(data){
 	szabalyok = data;
 	//mai = szabalyok.mai;
 	if (szabalyok.tegnapi) {
@@ -63,12 +63,12 @@ readJsonFile("szabalyok.json", function(data){
 	}
 });
 
-function readTextFile(file, callback) {
-	$.get(file, function(text){
+async function readTextFile(file, callback) {
+	await $.get(file, function(text){
 		callback(text);
 	}, 'text');
 }
-readTextFile(maiKey + '.txt', function(text){
+await readTextFile(maiKey + '.txt', function(text){
 	mai = text.trim().split('\n')[1].trim();
 	document.getElementById('quote').innerText = "„" + tanarok[mai].idezet + "”";
 })
