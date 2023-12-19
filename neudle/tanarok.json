@@ -2,10 +2,11 @@
     "proto": {
         "nem": "",
         "hajszin": "",
-        "jellem": [""],
+        "tantargy": [""],
         "segitseg": ["", ""],
         "szakmacsoport": [""],
-        "of": [""]
+        "of": [""],
+        "idezet": ""
     },
     "Molnár Ferenc": {
         "nem": "férfi",
@@ -13,7 +14,8 @@
         "tantargy": ["történelem", "magyar"],
         "segitseg": ["Uraim!", "Nem eszünk, nem iszunk, nem mobilozunk!"],
         "szakmacsoport": ["humán"],
-        "of": ["idk"]
+        "of": ["idk"],
+        "idezet": ""
     },
     "Kelemen Tünde": {
         "nem": "nő",
@@ -21,7 +23,8 @@
         "tantargy": ["magyar", "német"],
         "segitseg": ["Lesünk, mint Mari néni a hegyoldalban", "Embörpalánta"],
         "szakmacsoport": ["humán", "idegennyelvi"],
-        "of": ["igen", "7. évf."]
+        "of": ["igen", "7. évf."],
+        "idezet": ""
     },
     "Nagy Tünde": {
         "nem": "nő",
@@ -29,7 +32,8 @@
         "tantargy": ["angol"],
         "segitseg": ["Gyerekek, nem olvassátok a Teamst...", "valami"],
         "szakmacsoport": ["idegennyelvi"],
-        "of": ["igen", "11. évf."]
+        "of": ["igen", "11. évf."],
+        "idezet": ""
     },
     "Zentai Péter": {
         "nem": "férfi",
@@ -37,6 +41,16 @@
         "tantargy": ["informatika"],
         "segitseg": ["Mit is kellene ma csinálnunk?", "valami"],
         "szakmacsoport": ["informatikai és gazdasági"],
-        "of": ["idk"]
+        "of": ["idk"],
+        "idezet": ""
+    },
+    "Varga Szilvia": {
+        "nem": "nő",
+        "hajszin": "sötét",
+        "tantargy": ["biológia", "földrajz"],
+        "segitseg": ["Hátul is van ám szemem!", "Nézzétek, milyen jól meganimáltam!"],
+        "szakmacsoport": ["természettudományi"],
+        "of": ["idk"],
+        "idezet": "Addig nem megyek el, míg belétek nem verem!"
     }
 }

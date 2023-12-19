@@ -6,7 +6,6 @@ const gray = "#646464"
 const maiKey = "s0BFWcPak50WsbZC4JkORamQ3nrc1QHL";
 
 var gametable;
-var gametableHeader;
 var nameInput;
 var errorText;
 var button;
@@ -20,24 +19,6 @@ function selectName(name) {
 	autocompleteList.innerHTML = "";
 }
 
-function toggleElement(id) {
-	const element = document.getElementById('toggleObject' + id);
-	const click = document.getElementById('toggleClick' + id);
-	let txt;
-	if (click) {
-		txt = click.innerText.trim();
-		if (txt[1] === ' ') txt = txt.substring(2);
-	}
-	if (element.style.display === 'none') {
-		element.style.display = '';
-		if (click) click.innerText = txt;
-	}
-	else {
-		element.style.display = 'none';
-		if (click) click.innerText = '▶ ' + txt;
-	}
-}
-
 $( document ).ready(function() {
 	
 var tanarok;
@@ -47,15 +28,12 @@ let szabalyok;
 let mai;
 
 gametable = document.getElementById('gametable');
-gametableHeader = document.getElementById('gametableHeader');
 nameInput = document.getElementById('name');
 errorText = document.getElementById('error');
 button = document.getElementById('submit');
 help1 = document.getElementById('help1');
 help2 = document.getElementById('help2');
 autocompleteList = document.getElementById('autocomplete-list');
-
-gametableHeader.style.display = 'none';
 
 let paddings = parseInt(window.getComputedStyle(button).getPropertyValue('margin-left')) + parseInt(window.getComputedStyle(nameInput).getPropertyValue('margin-right'));
 nameInput.style.width = `calc(100% - ${button.offsetWidth}px - ${paddings}px)`;
@@ -91,7 +69,8 @@ function readTextFile(file, callback) {
 	}, 'text');
 }
 readTextFile(maiKey + '.txt', function(text){
-	mai = text.trim().split('\n')[0].trim();
+	mai = text.trim().split('\n')[1].trim();
+	document.getElementById('quote').innerText = "„" + tanarok[mai].idezet + "”";
 })
 
 function playAudio(name) {
@@ -153,7 +132,6 @@ function tipp() {
 	}
 	let tanar = tanarok[nev];
 
-	gametableHeader.style.display = 'table-row';
 	nameInput.value = "";
 
 	let row = gametable.insertRow(4);
@@ -161,26 +139,6 @@ function tipp() {
 	var td = row.insertCell(-1);
 	td.innerHTML = nev;
 	td.style.backgroundColor = nev == mai ? green : red;
-
-	td = row.insertCell(-1);
-	td.innerHTML = tanar.nem;
-	td.style.backgroundColor = kozosVonasok(nev, mai, "nem");
-
-	td = row.insertCell(-1);
-	td.innerHTML = tanar.hajszin;
-	td.style.backgroundColor = kozosVonasok(nev, mai, "hajszin");
-
-	td = row.insertCell(-1);
-	td.innerHTML = tanar.szakmacsoport.join(', ');
-	td.style.backgroundColor = kozosVonasok(nev, mai, "szakmacsoport");
-
-	td = row.insertCell(-1);
-	td.innerHTML = tanar.tantargy.join(', ');
-	td.style.backgroundColor =kozosVonasok(nev, mai, "tantargy");
-
-	td = row.insertCell(-1);
-	td.innerHTML = tanar.of.join(', ');
-	td.style.backgroundColor = kozosVonasok(nev, mai, "of");
 
 	tippek.push(nev);
 	if (nev == mai) solved();
