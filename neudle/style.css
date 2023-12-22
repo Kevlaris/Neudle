@@ -85,12 +85,12 @@ footer {
 
 	background-color: rgba(70, 70, 70, 0.5);
 }
-#split {
+.split {
 	display: flex;
     flex-wrap: nowrap;
     flex-shrink: 2;
 }
-#split * {
+.split * {
 	width: 50%;
 	display: block;
 	margin-bottom: 8px;

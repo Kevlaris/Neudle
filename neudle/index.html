@@ -19,7 +19,7 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Caveat">
 
 	<style>
-		#start {
+		.start {
 			background-color: rgb(20, 214, 20);
 			font-family: Verdana, Geneva, Tahoma, sans-serif;
 			font-weight: bold;
@@ -31,15 +31,15 @@
 			border: 0px;
 			box-shadow: 0px;
 			border-radius: 10px;
-			margin: auto;
-			display: block;
+			/* margin: auto;
+			display: block; */
+			margin-left: 25px;
+			margin-right: 25px;
 		}
-
-			#start:hover {
+			.start:hover {
 				background-color: rgb(17, 182, 17);
 			}
-
-			#start:active {
+			.start:active {
 				background-color: rgb(10, 100, 10);
 			}
 	</style>
@@ -57,11 +57,15 @@
 				<p>Minden nap új feladványokkal készülünk nektek, ne maradjatok le! Megéri mindet kitalálni, mert a végén értékes nyeremény ütheti a markod!</p>
 				<p>Ha tetszett a játék, akkor ne felejtsd el megmutatni haverjaidnak és osztálytársaidnak, de a legfontosabb, hogy <strong style="font-size: larger; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">szavazz a 11.I-re!</strong></p>
 
-				<button id="start" class="growOnHover" onclick="document.location='./classic'">▶ KLASSZIKUS</button>
+				<div class="split">
+					<button class="start growOnHover" onclick="document.location='./classic'">▶ KLASSZIKUS</button>
+					<button class="start growOnHover" onclick="document.location='./quote'">▶ IDÉZETES</button>
+				</div>
+				
 			</main>
 			<footer>
-				<div id="split">
-					<p>11.Italy</p>
+				<div class="split">
+					<p><a href="../">11.Italy</a></p>
 					<p style="text-align: right;">2023 Neumann Diáknapok</p>
 				</div>
 				<p style="font-size: 13px; color: rgb(190, 190, 190);">A weboldal csupán a szórakozás céljából jött létre, nem áll szándékában véleményt formálni vagy rossz színben feltüntetni a benne szereplő személyeket. Az oldal nem a Neumann János Gimnázium, Technikum és Kollégium megbízásából készült.</p>

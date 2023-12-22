@@ -3,8 +3,6 @@ const yellow = "#cda532";
 const red = "#cd3232";
 const gray = "#646464"
 
-const maiKey = "s0BFWcPak50WsbZC4JkORamQ3nrc1QHL";
-
 var gametable;
 var nameInput;
 var errorText;
@@ -68,7 +66,7 @@ async function readTextFile(file, callback) {
 		callback(text);
 	}, 'text');
 }
-await readTextFile(maiKey + '.txt', function(text){
+await readTextFile('mai.txt', function(text){
 	mai = text.trim().split('\n')[1].trim();
 	document.getElementById('quote').innerText = "„" + tanarok[mai].idezet + "”";
 })
