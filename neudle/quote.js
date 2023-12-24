@@ -66,7 +66,7 @@ async function readTextFile(file, callback) {
 		callback(text);
 	}, 'text');
 }
-await readTextFile('mai.txt', function(text){
+await readTextFile('./mai.txt', function(text){
 	mai = text.trim().split('\n')[1].trim();
 	document.getElementById('quote').innerText = "„" + tanarok[mai].idezet + "”";
 })
