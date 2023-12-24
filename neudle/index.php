@@ -46,11 +46,7 @@
 </head>
 	<body>
 		<div id="window">
-			<header>
-				<h1 id="title" class="growOnHover"><a href="./" title="Főoldal">Neudle</a></h1>
-				<hr style="width: 36px; margin-top: 4px; margin-bottom: 4px">
-				<h2 id="subtitle">A Neumannos Rejtvényoldal</h2>
-			</header>
+			<?php include("header.html") ?>
 			<main>
 				<p><strong>Bongiorno!</strong></p>
 				<p>Úgy gondolod, ismered a tanáraidat? Szeretnéd próbára tenni a tudásod? Ez a játék a <a href="https://www.nytimes.com/games/wordle/" target="_blank">Wordle</a> és a <a href="https://loldle.net/" target="_blank">LoLdle</a> neumanni ötvözete, viszont ezúttal a játékkarakterek és mindenféle bugyuta szavak helyett a kedvenc tanáraitokat kell kitalálnotok! Sok sikert, jó szórakozást!</p>
@@ -63,14 +59,7 @@
 				</div>
 				
 			</main>
-			<footer>
-				<div class="split">
-					<p><a href="../">11.Italy</a></p>
-					<p style="text-align: right;">2023 Neumann Diáknapok</p>
-				</div>
-				<p style="font-size: 13px; color: rgb(190, 190, 190);">A weboldal csupán a szórakozás céljából jött létre, nem áll szándékában véleményt formálni vagy rossz színben feltüntetni a benne szereplő személyeket. Az oldal nem a Neumann János Gimnázium, Technikum és Kollégium megbízásából készült.</p>
-				<p style="font-size: 13px; color: rgb(190, 190, 190);">Meghibásodás, észrevétel esetén keress bátran: <a href="mailto:team3csh@gmail.com">Csuhai Hunor</a></p>
-			</footer>
+			<?php include("footer.html") ?>
 		</div>
 	</body>
 </html>

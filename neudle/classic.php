@@ -16,11 +16,7 @@
 </head>
 	<body>
 		<div id="window">
-			<header>
-				<h1 id="title" class="growOnHover"><a href="./" title="Főoldal">Neudle</a></h1>
-				<hr style="width: 36px; margin-top: 4px; margin-bottom: 4px">
-				<h2 id="subtitle">A Neumannos Rejtvényoldal</h2>
-			</header>
+			<?php include("header.html") ?>
 			<main>
 				<h1 style="text-align: center; margin-top: 8px;">Klasszikus feladvány</h1>
 				<p style="font-size: 18px;">A klasszikus játék menete a következő: adott az iskola egy tanára, akire a tulajdonságai alapján kell rájönnöd, találgatásos alapon. A próbálkozásaidra színekkel válaszol a program, a jelmagyarázatot oldalt találod. Ezen kívül a program időnként segítségekkel lát el, amelyek általában idézetek, vagy az adott személyhez kapcsolható dolgok. A lenti szövegdobozba gépelve meg fognak jelenni a választható tanárok nevei. Ajánlott a listából választani, mert így kiesik annak az esélye, hogy esetleg elgépeled. Minden tanárra csak egyszer tippelhetsz.</p>
@@ -80,14 +76,7 @@
 					</tr>
 				</table>
 			</main>
-			<footer>
-				<div class="split">
-					<p><a href="../">11.Italy</a></p>
-					<p style="text-align: right;">2023 Neumann Diáknapok</p>
-				</div>
-				<p style="font-size: 13px; color: rgb(190, 190, 190);">A weboldal csupán a szórakozás céljából jött létre, nem áll szándékában véleményt formálni vagy rossz színben feltüntetni a benne szereplő személyeket. Az oldal nem a Neumann János Gimnázium, Technikum és Kollégium megbízásából készült.</p>
-				<p style="font-size: 13px; color: rgb(190, 190, 190);">Meghibásodás, észrevétel esetén keress bátran: <a href="mailto:team3csh@gmail.com">Csuhai Hunor</a></p>
-			</footer>
+			<?php include("footer.html") ?>
 		</div>
 	</body>
 </html>
