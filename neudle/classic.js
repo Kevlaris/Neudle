@@ -36,8 +36,6 @@ function toggleElement(id) {
 	}
 }
 
-$( document ).ready(function() {
-	
 var tanarok;
 var nevek;
 let tippek = [];
@@ -54,6 +52,9 @@ help2 = document.getElementById('help2');
 autocompleteList = document.getElementById('autocomplete-list');
 
 gametableHeader.style.display = 'none';
+console.log(gametable.firstChild.childNodes.length);
+if (gametable.firstChild.childNodes.length > 4) gametableHeader.style.display = 'table-row';
+
 
 let paddings = parseInt(window.getComputedStyle(button).getPropertyValue('margin-left')) + parseInt(window.getComputedStyle(nameInput).getPropertyValue('margin-right'));
 nameInput.style.width = `calc(100% - ${button.offsetWidth}px - ${paddings}px)`;
@@ -204,35 +205,3 @@ function tipp() {
 		}
 	}
 }
-
-//-1 = piros, 0 = sárga, 1 = zöld
-function kozosVonasok(nev1, nev2, tulajdonsag) {
-	//console.log("called");
-	t1 = tanarok[nev1.trim()][tulajdonsag.trim()];
-	t2 = tanarok[nev2.trim()][tulajdonsag.trim()];
-	let result = -1;
-	if (typeof(t1) === 'object' && typeof(t2) === 'object') {
-		let count = 0;
-		t1.forEach(element => {
-			if (t2.includes(element)) count++;
-		});
-		//console.log("count: " + count);
-		if (count == 0) result = -1;
-		else if (count == t1.length && count == t2.length) result = 1;
-		else result = 0;
-	} else {
-		result = t1 == t2 ? 1 : -1
-	}
-
-	switch (result) {
-		case 1: return green;
-		case 0: return yellow;
-		case -1: return red;
-		default: return gray;
-	}
-}
-
-button.addEventListener('click', tipp)
-
-
-});

@@ -1,3 +1,75 @@
+<?php
+	session_start();
+	
+	function get_json($filename) {
+		$myfile = fopen($filename, "r") or die("Unable to open {$filename}!");
+		$obj = json_decode(fread($myfile, filesize($filename)), true);
+		fclose($myfile);
+		return $obj;
+	}
+	$tanarok = get_json("tanarok.json");
+
+	function kozos_vonas($nev1, $nev2, $tulajdonsag) {
+		global $tanarok;
+		$t1 = $tanarok[trim($nev1)][trim($tulajdonsag)];
+		$t2 = $tanarok[trim($nev2)][trim($tulajdonsag)];
+		$result = null;
+
+		if (gettype($t1) == "array" && gettype($t2) == "array") {
+			$count = 0;
+			foreach ($t1 as $attr) {
+				if (in_array($attr, $t2)) $count++;
+			}
+			if ($count == 0) $result = -1;
+			elseif ($count == sizeof($t1) && $count == sizeof($t2)) $result = 1;
+			else $result = 0;
+		} else {
+			if ($t1 == $t2) $result = 1;
+			else $result = -1;
+		}
+
+		switch ($result) {
+			case 1: return "#32cd32";
+			case 0: return "#cda532";
+			case -1: return "#cd3232";
+			default: return "#646464";
+		}
+	}
+
+	parse_str(file_get_contents("php://input"),$_POST);
+	$guesses = null;
+	if (isset($_SESSION["guesses"])) $guesses = $_SESSION["guesses"];
+	else $guesses = array();
+	$guess = $_POST["guess"];
+
+	$code = "empty";
+	if (!empty($guess)) {
+		$continue = true;
+		if ($guess == "reset") {
+			$guesses = array();
+			$continue = false;
+		}
+		elseif (isset($_SESSION["previous"])) {
+			# ignore if already tried
+			if ($guess == $_SESSION["previous"]) $continue = false;
+		}
+
+		if ($continue) {
+			if (!array_key_exists($guess, $tanarok)) $code = "notfound";
+			elseif (in_array($guess, $guesses)) $code = "tried";
+			else {
+				array_push($guesses, $_POST["guess"]);
+				$code = "ok";
+			}
+			$_SESSION["previous"] = $guess;
+		}
+		else $code = "ignore";
+		unset($continue);
+	}
+	
+	$_SESSION["guesses"] = $guesses;
+?>
+
 <!DOCTYPE html>
 <html lang="hu">
 <head>
@@ -12,7 +84,7 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Caveat">
 
 	<script src="/jquery-3.7.1.js"></script>
-	<script src="classic.js"></script>
+	<!-- <script src="classic.js"></script> -->
 </head>
 	<body>
 		<div id="window">
@@ -48,16 +120,25 @@
 					<tr class="noborder">
 						<td colspan="6" style="position: relative; height: fit-content; z-index: 80;">
 							<div style="margin-bottom: 0px; height: fit-content;">
-								<form>
-									<input type="text" name="name" id="name" required autocomplete="off" readonly onfocus="this.removeAttribute('readonly');" placeholder="Kezdd el gépelni egy tanár nevét..." />
-									<input type="button" id="submit" value="Tippelj!">
+								<form method="post" action="classic">
+									<input type="text" name="guess" id="name" required autocomplete="off" readonly onfocus="this.removeAttribute('readonly');" placeholder="Kezdd el gépelni egy tanár nevét..." />
+									<input type="submit" id="submit" value="Tippelj!">
 									<ul id="autocomplete-list">
 
 									</ul>
 								</form>
 							</div>
-							
-							<p id="error"></p>
+							<?php
+								switch ($code) {
+									case "notfound":
+										echo "<p id='error' style='display: block'>Ilyen tanár nincs a játékban! Kérlek, válassz a listából!</p>";
+										break;
+									case "tried":
+										echo "<p id='error' style='display: block'>Őt már próbáltad!</p>";
+										break;
+									default: break;
+								}
+							?>
 						</td>
 					</tr>
 					<tr class="noborder" style="display: none;">
@@ -74,7 +155,29 @@
 						<th style="width: 20%;">Tantárgy</th>
 						<th style="width: 15%;">Osztályfőnök?</th>
 					</tr>
+					<?php
+					$mai = "Kelemen Tünde";
+						foreach (array_reverse($guesses) as $g) {
+							$tanar = $tanarok[$g];
+							echo "<tr>";
+
+							$egyezik = $g == $mai;
+							$color = null;
+							if ($egyezik) $color = "#32cd32";
+							else $color = "#cd3232";
+
+							echo "<td style='background-color: {$color}'>" . $g . "</td>";
+							echo "<td style='background-color: " . kozos_vonas($g, $mai, "nem") . "'>" . $tanar["nem"] . "</td>";
+							echo "<td style='background-color: " . kozos_vonas($g, $mai, "hajszin") . "'>" . $tanar["hajszin"] . "</td>";
+							echo "<td style='background-color: " . kozos_vonas($g, $mai, "szakmacsoport") . "'>" . join(", ", $tanar["szakmacsoport"]) . "</td>";
+							echo "<td style='background-color: " . kozos_vonas($g, $mai, "tantargy") . "'>" . join(", ", $tanar["tantargy"]) . "</td>";
+							echo "<td style='background-color: " . kozos_vonas($g, $mai, "of") . "'>" . join(", ", $tanar["of"]) . "</td>";
+
+							echo "</tr>";
+						}
+					?>
 				</table>
+				
 			</main>
 			<?php include("footer.html") ?>
 		</div>
