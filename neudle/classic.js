@@ -1,7 +1,7 @@
 const green = "#32cd32";
 const yellow = "#cda532";
 const red = "#cd3232";
-const gray = "#646464"
+const gray = "#646464";
 
 var gametable;
 var gametableHeader;
