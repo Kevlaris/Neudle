@@ -1,22 +1,6 @@
-const green = "#32cd32";
-const yellow = "#cda532";
-const red = "#cd3232";
-const gray = "#646464";
-
-var gametable;
-var gametableHeader;
 var nameInput;
-var errorText;
 var button;
-var help1;
-var help2;
 var autocompleteList;
-
-function selectName(name) {
-	console.log("select " + name);
-	nameInput.value = name;
-	autocompleteList.innerHTML = "";
-}
 
 function toggleElement(id) {
 	const element = document.getElementById('toggleObject' + id);
@@ -35,25 +19,26 @@ function toggleElement(id) {
 		if (click) click.innerText = '▶ ' + txt;
 	}
 }
+function playAudio(name) {
+	var audio = new Audio('sounds/' + name);
+	audio.play();
+}
 
 var tanarok;
 var nevek;
-let tippek = [];
-let szabalyok;
-let mai;
 
-gametable = document.getElementById('gametable');
-gametableHeader = document.getElementById('gametableHeader');
+function selectName(name) {
+	console.log("select " + name);
+	nameInput.value = name;
+	autocompleteList.innerHTML = "";
+}
+
+$(document).ready(function(){
+
 nameInput = document.getElementById('name');
-errorText = document.getElementById('error');
 button = document.getElementById('submit');
-help1 = document.getElementById('help1');
-help2 = document.getElementById('help2');
 autocompleteList = document.getElementById('autocomplete-list');
 
-gametableHeader.style.display = 'none';
-console.log(gametable.firstChild.childNodes.length);
-if (gametable.firstChild.childNodes.length > 4) gametableHeader.style.display = 'table-row';
 
 
 let paddings = parseInt(window.getComputedStyle(button).getPropertyValue('margin-left')) + parseInt(window.getComputedStyle(nameInput).getPropertyValue('margin-right'));
@@ -73,30 +58,6 @@ readJsonFile("tanarok.json", function(data){
 	if (idx > -1) nevek.splice(idx, 1);
 	nevek.sort();
 });
-//load szabalyok
-readJsonFile("szabalyok.json", function(data){
-	szabalyok = data;
-	//mai = szabalyok.mai;
-	if (szabalyok.tegnapi) {
-		const tegnapi = document.getElementById('tegnapi');
-		tegnapi.innerHTML = `<i>A tegnapi megfejtés: <u>${szabalyok.tegnapi}</u></i>`;
-		tegnapi.style.display = 'initial';
-	}
-});
-
-function readTextFile(file, callback) {
-	$.get(file, function(text){
-		callback(text);
-	}, 'text');
-}
-readTextFile('mai.txt', function(text){
-	mai = text.trim().split('\n')[0].trim();
-})
-
-function playAudio(name) {
-	var audio = new Audio('sounds/' + name);
-	audio.play();
-}
 
 function loadNames(data, element) {
 	element.innerHTML = "";
@@ -104,104 +65,29 @@ function loadNames(data, element) {
 	let inner = "";
 	data.forEach((item) => {
 		inner += `
-		<li onclick="selectName('${item}');">${item}</li>`;
+		<li tabindex="0" onkeydown="if (event.key === 'Enter') selectName(this.textContent);" onclick="selectName('${item}');">${item}</li>`;
 	});
 	element.innerHTML = inner;
 	element.style.width = window.getComputedStyle(nameInput).width;
 }
-
 function filterNames(searchText) {
 	if (!searchText || searchText.length === 0) return null;
 	return nevek.filter((x) => x.toLowerCase().includes(searchText.toLowerCase())).filter((x) => !tippek.includes(x));
 }
-
 nameInput.addEventListener('input', function() {
 	const filtered = filterNames(nameInput.value);
 	loadNames(filtered, autocompleteList);
 });
 
-//amikor megoldottad
-function solved() {
-	playAudio('yippee.wav');
-	nameInput.disabled = true;
-	button.disabled = true;
-
-	var p = document.createElement('p');
-	p.innerHTML = `Gratulálunk, kitaláltad! A megfejtés <b>${mai}</b> volt, akit ${tippek.length} tipp után találtál ki.`;
-	document.getElementsByTagName('main')[0].appendChild(p);
-	p.scrollIntoView(true);
-}
-
-//amikor megnyomja a tipp gombot
-function tipp() {
-	let nev = nameInput.value;
-
-	if (tippek.includes(nev)) {
-		errorText.innerHTML = "Ezt már próbáltad!";
-		errorText.style.display = "initial";
-		playAudio('fart.mp3');
-		return;
-	} else if (!(nev in tanarok)) {
-		errorText.innerHTML = "Ilyen tanár nincs a játékban!";
-		errorText.style.display = "initial";
-		playAudio('fart.mp3');
-		return;
-	} else {
-		errorText.innerHTML = "";
-		errorText.style.display = "none";
-	}
-	let tanar = tanarok[nev];
-
-	gametableHeader.style.display = 'table-row';
-	nameInput.value = "";
-
-	let row = gametable.insertRow(4);
-
-	var td = row.insertCell(-1);
-	td.innerHTML = nev;
-	td.style.backgroundColor = nev == mai ? green : red;
-
-	td = row.insertCell(-1);
-	td.innerHTML = tanar.nem;
-	td.style.backgroundColor = kozosVonasok(nev, mai, "nem");
-
-	td = row.insertCell(-1);
-	td.innerHTML = tanar.hajszin;
-	td.style.backgroundColor = kozosVonasok(nev, mai, "hajszin");
-
-	td = row.insertCell(-1);
-	td.innerHTML = tanar.szakmacsoport.join(', ');
-	td.style.backgroundColor = kozosVonasok(nev, mai, "szakmacsoport");
-
-	td = row.insertCell(-1);
-	td.innerHTML = tanar.tantargy.join(', ');
-	td.style.backgroundColor =kozosVonasok(nev, mai, "tantargy");
-
-	td = row.insertCell(-1);
-	td.innerHTML = tanar.of.join(', ');
-	td.style.backgroundColor = kozosVonasok(nev, mai, "of");
-
-	tippek.push(nev);
-	if (nev == mai) solved();
-	else {
-		playAudio('fart.mp3');
-		if (tippek.length >= szabalyok.tippMegjelenites) {
-			if (tippek.length < szabalyok.tipp1) {
-				help1.parentElement.style.display = 'table-row';
-				help1.innerHTML = "<b>1. segítség:</b> " + (szabalyok.tipp1 - tippek.length) + " kör múlva";
-			}
-			else if (tippek.length == szabalyok.tipp1) {
-				help1.parentElement.style.display = 'table-row';
-				help1.innerHTML = '<b>1. segítség:</b> "' + tanarok[mai].segitseg[0] + '"';
-			}
-			else if (tippek.length < szabalyok.tipp2) {
-				help2.parentElement.style.display = 'table-row';
-				help2.innerHTML = "<b>2. segítség:</b> " + (szabalyok.tipp2 - tippek.length) + " kör múlva";
-			}
-			else if (tippek.length == szabalyok.tipp2) {
-				help2.parentElement.style.display = 'table-row';
-				help2.innerHTML = '<b>2. segítség:</b> "' + tanarok[mai].segitseg[1] + '"';
-			}
+// tab between list elements
+const listItems = document.querySelectorAll('.autocomplete-list li');
+listItems.forEach((item, index, array) => {
+	item.addEventListener('keydown', (event) => {
+		if (event.key === 'Tab') {
+			event.preventDefault();
+			array[(index + 1) % array.length].focus();
 		}
-	}
-}
+	});
+});
+
+})

@@ -36,6 +36,7 @@
 		}
 	}
 
+	# handle guesses
 	parse_str(file_get_contents("php://input"),$_POST);
 	$guesses = null;
 	if (isset($_SESSION["guesses"])) $guesses = $_SESSION["guesses"];
@@ -48,6 +49,7 @@
 		if ($guess == "reset") {
 			$guesses = array();
 			$continue = false;
+			session_unset();
 		}
 		elseif (isset($_SESSION["previous"])) {
 			# ignore if already tried
@@ -68,6 +70,8 @@
 	}
 	
 	$_SESSION["guesses"] = $guesses;
+	# let the js script know what the guesses are
+	if (sizeof($guesses) > 0) echo "<script>const tippek = ['" . join("', '", $guesses) . "']</script>";
 ?>
 
 <!DOCTYPE html>
@@ -84,7 +88,7 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Caveat">
 
 	<script src="/jquery-3.7.1.js"></script>
-	<!-- <script src="classic.js"></script> -->
+	<script src="classic.js"></script>
 </head>
 	<body>
 		<div id="window">
@@ -147,7 +151,7 @@
 					<tr class="noborder" style="display: none;">
 						<td id="help2" colspan="6" style="height: 2em;"><b>1. segítség:</b> a</td>
 					</tr>
-					<tr id="gametableHeader">
+					<tr id="gametableHeader" style="display: <?php if (sizeof($guesses) > 0) echo 'table-row'; else echo 'none' ?>;">
 						<th style="width: 20%;">Név</th>
 						<th style="width: 10%;">Nem</th>
 						<th style="width: 15%;">Hajszín</th>
@@ -174,6 +178,11 @@
 							echo "<td style='background-color: " . kozos_vonas($g, $mai, "of") . "'>" . join(", ", $tanar["of"]) . "</td>";
 
 							echo "</tr>";
+
+							if ($g == $guess) {
+								if ($egyezik) echo "<script>playAudio('yippee.wav')</script>";
+								else echo "<script>playAudio('fart.mp3')</script>";
+							}
 						}
 					?>
 				</table>

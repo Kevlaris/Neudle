@@ -129,8 +129,9 @@ tr.noborder > td, tr.noborder > th {
         cursor: pointer;
         text-align: start;
     }
-        #autocomplete-list li:hover {
+        #autocomplete-list li:hover, #autocomplete-list li:focus {
             background-color: rgb(190, 190, 190);
+            outline: none;
         }
         #autocomplete-list li:active {
             filter: brightness(0.8);
